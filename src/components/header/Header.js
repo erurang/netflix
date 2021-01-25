@@ -3,16 +3,28 @@ import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
 
-const Header = styled.header``;
+const Header = styled.header`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  border-bottom: 1px solid white;
+`;
 
 const List = styled.ul`
   display: flex;
-  &:hover {
-    background-color: blue;
-  }
+  position: fixed;
 `;
 
-const Item = styled.li``;
+const Item = styled.li`
+  margin-right: 30px;
+  cursor: pointer;
+  transition: 0.15s ease-in;
+  &:hover {
+    color: lightgray;
+  }
+`;
 
 export default () => {
   const history = useHistory();
@@ -21,7 +33,9 @@ export default () => {
     <Header>
       <List>
         <Item>
-          <string onClick={() => history.push("home")}>홈</string>
+          <string onClick={() => history.push("home")}>
+            <i class="fab fa-yarn" style={{ color: "#E50916" }}></i>홈
+          </string>
         </Item>
         <Item>
           <string onClick={() => history.push("tv")}>TV 프로그램</string>
