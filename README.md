@@ -1,9 +1,7 @@
 # Netflix clone
 
-헤더를 withRouter를 이용하여 현재의 url에 맞게 헤더가 표시되도록 처리함.
+<img width="978" alt="스크린샷 2021-01-27 오전 6 58 19" src="https://user-images.githubusercontent.com/56789064/105911015-0c5c2800-606d-11eb-85ea-1690d1819844.png">
 
-전체적 css를 위해서 GlobalStyles.js를 생성함.
+url을 props로 받아서 location history match를 이용하여 params를 받아와서
 
-이번에 만든 헤더의 모습
-
-![ㅇㅇㅇㅇ](https://user-images.githubusercontent.com/56789064/105808569-53093e00-5feb-11eb-8b83-6674f0f99231.gif)
+id에 맞는 정보를 가져올수있도록 구현함
