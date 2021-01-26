@@ -50,7 +50,7 @@ export default withRouter(({ location: { pathname } }) => {
           <span onClick={() => history.push("tv")}>TV 프로그램</span>
         </Item>
         <Item current={pathname === "/search"}>
-          <span onClick={() => history.push("search")}>영화</span>
+          <span onClick={() => history.push("search")}>검색</span>
         </Item>
         <Item current={pathname === "/detail"}>
           <span onClick={() => history.push("detail")}>내가 찜한 콘텐츠</span>
