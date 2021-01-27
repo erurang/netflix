@@ -2,7 +2,7 @@ import React from "react";
 import { moviesApi, tvApi } from "../../Api";
 import SearchPresenter from "./SearchPresenter";
 
-export default class extends React.Component {
+export default class SearchContainer extends React.Component {
   state = {
     movieResults: null,
     tvResults: null,
@@ -14,9 +14,10 @@ export default class extends React.Component {
   handleSubmit = () => {
     const { searchTerm } = this.state;
 
-    if (searchTerm !== "") {
-      this.saerchByTerm(searchTerm);
-    }
+    console.log(searchTerm);
+    // if (searchTerm !== "") {
+    //   this.saerchByTerm(searchTerm);
+    // }
   };
 
   saerchByTerm = async (term) => {
@@ -28,20 +29,20 @@ export default class extends React.Component {
       const {
         data: { results: movieResults },
       } = await moviesApi.search(searchTerm);
+
       const {
         data: { results: tvResults },
       } = await tvApi.search(searchTerm);
 
-      console.log(movieResults, tvResults);
       this.setState({ movieResults, tvResults });
     } catch {
       this.setState({ error: "결과없음" });
     } finally {
+      this.setState({ loading: false });
     }
   };
 
   render() {
-    console.log(this);
     const { movieResults, tvResults, searchTerm, error, loading } = this.state;
     return (
       <SearchPresenter

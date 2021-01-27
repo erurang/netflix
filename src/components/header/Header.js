@@ -13,6 +13,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 0px 10px;
+  margin-bottom: 20px;
 `;
 
 const List = styled.ul`
@@ -48,6 +49,9 @@ export default withRouter(({ location: { pathname } }) => {
         </Item>
         <Item current={pathname === "/tv"}>
           <span onClick={() => history.push("tv")}>TV 프로그램</span>
+        </Item>
+        <Item current={pathname === "/movie"}>
+          <span onClick={() => history.push("movie")}>영화</span>
         </Item>
         <Item current={pathname === "/search"}>
           <span onClick={() => history.push("search")}>검색</span>

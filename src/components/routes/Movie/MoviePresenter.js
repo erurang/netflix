@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+
 import Section from "../../Section";
+
 import Loader from "../../Loader";
 
 const Container = styled.div`
   padding: 0px 10px;
 `;
 
-const TvPresenter = ({ nowPlaying, topRated, popular, error, loading }) =>
+const MoviePresenter = ({ nowPlaying, upComing, popular, error, loading }) =>
   loading ? (
     <Loader />
   ) : (
@@ -15,25 +17,25 @@ const TvPresenter = ({ nowPlaying, topRated, popular, error, loading }) =>
       {nowPlaying && nowPlaying.length > 0 && (
         <Section
           key={nowPlaying.map((data) => data.id)}
-          title="방영중"
-          children={nowPlaying.map((data) => data.original_name)}
+          title="상영중"
+          children={nowPlaying.map((data) => data.title)}
         />
       )}
-      {topRated && topRated.length > 0 && (
+      {upComing && upComing.length > 0 && (
         <Section
-          key={topRated.map((data) => data.id)}
-          title="평점좋은"
-          children={topRated.map((data) => data.original_name)}
+          key={upComing.map((data) => data.id)}
+          title="다가오는"
+          children={upComing.map((data) => data.title)}
         />
       )}
       {popular && popular.length > 0 && (
         <Section
           key={popular.map((data) => data.id)}
           title="인기있는"
-          children={popular.map((data) => data.original_name)}
+          children={popular.map((data) => data.title)}
         />
       )}
     </Container>
   );
 
-export default TvPresenter;
+export default MoviePresenter;

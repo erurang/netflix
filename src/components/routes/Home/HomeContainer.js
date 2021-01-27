@@ -1,12 +1,13 @@
 import React from "react";
-import { moviesApi } from "../../Api";
+import { moviesApi, tvApi } from "../../Api";
 import HomePresenter from "./HomePresenter";
 
 export default class extends React.Component {
   state = {
-    nowPlaying: null,
-    upComing: null,
-    popular: null,
+    movieNowPlaying: null,
+    moviePopular: null,
+    tvNowPlaying: null,
+    tvPopular: null,
     error: null,
     loading: true,
   };
@@ -14,21 +15,23 @@ export default class extends React.Component {
   async componentDidMount() {
     try {
       const {
-        data: { results: nowPlaying },
+        data: { results: movieNowPlaying },
       } = await moviesApi.nowPlaying();
-      // this.setState({ nowPlaying });
 
       const {
-        data: { results: upComing },
-      } = await moviesApi.upComing();
-      // this.setState({ upComing });
-
-      const {
-        data: { results: popular },
+        data: { results: moviePopular },
       } = await moviesApi.popular();
       // this.setState({ popular });
 
-      this.setState({ nowPlaying, upComing, popular });
+      const {
+        data: { results: tvNowPlaying },
+      } = await tvApi.nowPlaying();
+
+      const {
+        data: { results: tvPopular },
+      } = await tvApi.popular();
+
+      this.setState({ moviePopular, movieNowPlaying, tvNowPlaying, tvPopular });
     } catch (error) {
       this.setState({
         error: "찾을수없어",
@@ -41,13 +44,21 @@ export default class extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-    const { nowPlaying, upcoming, popular, error, loading } = this.state;
+    const {
+      moviePopular,
+      movieNowPlaying,
+      tvPopular,
+      tvNowPlaying,
+      error,
+      loading,
+    } = this.state;
+
     return (
       <HomePresenter
-        nowPlaying={nowPlaying}
-        upcoming={upcoming}
-        popular={popular}
+        movieNowPlaying={movieNowPlaying}
+        moviePopular={moviePopular}
+        tvNowPlaying={tvNowPlaying}
+        tvPopular={tvPopular}
         error={error}
         loading={loading}
       />
