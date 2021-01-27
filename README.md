@@ -1,7 +1,5 @@
 # Netflix clone
 
-<img width="978" alt="스크린샷 2021-01-27 오전 6 58 19" src="https://user-images.githubusercontent.com/56789064/105911015-0c5c2800-606d-11eb-85ea-1690d1819844.png">
+![ddd](https://user-images.githubusercontent.com/56789064/106067291-bdcc8d80-6141-11eb-82ee-9d8573838851.gif)
 
-url을 props로 받아서 location history match를 이용하여 params를 받아와서
-
-id에 맞는 정보를 가져올수있도록 구현함
+각 헤더에 맞는 api들을 가져와서 화면에 표현하는 presenter를 구현함.
