@@ -11,16 +11,25 @@ export default class SearchContainer extends React.Component {
     loading: false,
   };
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const { searchTerm } = this.state;
 
     console.log(searchTerm);
-    // if (searchTerm !== "") {
-    //   this.saerchByTerm(searchTerm);
-    // }
+    if (searchTerm !== "") {
+      this.saerchByTerm(searchTerm);
+    }
+    console.log(encodeURIComponent(searchTerm));
   };
 
-  saerchByTerm = async (term) => {
+  updateTerm = (e) => {
+    const {
+      target: { value },
+    } = e;
+    this.setState({ searchTerm: value });
+  };
+
+  saerchByTerm = async () => {
     const { searchTerm } = this.state;
 
     try {
@@ -52,6 +61,7 @@ export default class SearchContainer extends React.Component {
         error={error}
         loading={loading}
         handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
       />
     );
   }
