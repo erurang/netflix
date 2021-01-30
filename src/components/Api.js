@@ -44,3 +44,7 @@ export const moviesApi = {
       },
     }),
 };
+
+export const trailerApi = {
+  movieTrailer: (id) => api.get(`movie/${id}/videos`),
+};

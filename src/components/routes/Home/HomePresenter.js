@@ -19,74 +19,76 @@ const HomePresenter = ({
   loading,
 }) =>
   loading ? (
-    <Loader />
+    <Loader></Loader>
   ) : (
-    <Container>
-      {movieNowPlaying && movieNowPlaying.length > 0 && (
-        <Section
-          title="현재 상영중"
-          children={movieNowPlaying.map((data) => (
-            <Poster
-              key={data.id}
-              id={data.id}
-              title={data.title}
-              imgUrl={data.poster_path}
-              rating={data.vote_average}
-              year={data.release_date.split("-")[0]}
-              isMovie={true}
-            />
-          ))}
-        />
-      )}
-      {moviePopular && moviePopular.length > 0 && (
-        <Section
-          title="인기 영화"
-          children={moviePopular.map((data) => (
-            <Poster
-              key={data.id}
-              id={data.id}
-              title={data.title}
-              imgUrl={data.poster_path}
-              rating={data.vote_average}
-              year={data.release_date.split("-")[0]}
-              isMovie={true}
-            />
-          ))}
-        />
-      )}
-      {tvNowPlaying && tvNowPlaying.length > 0 && (
-        <Section
-          title="현재 방영중"
-          children={tvNowPlaying.map((data) => (
-            <Poster
-              key={data.id}
-              id={data.id}
-              title={data.name}
-              imgUrl={data.poster_path}
-              rating={data.vote_average}
-              year={data.first_air_date.split("-")[0]}
-              isMovie={false}
-            />
-          ))}
-        />
-      )}
-      {tvPopular && tvPopular.length > 0 && (
-        <Section
-          title="인기 프로그램"
-          children={tvPopular.map((data) => (
-            <Poster
-              key={data.id}
-              id={data.id}
-              title={data.name}
-              imgUrl={data.poster_path}
-              rating={data.vote_average}
-              year={data.first_air_date.split("-")[0]}
-              isMovie={false}
-            />
-          ))}
-        />
-      )}
-    </Container>
+    <>
+      <Container>
+        {movieNowPlaying && movieNowPlaying.length > 0 && (
+          <Section
+            title="현재 상영중"
+            children={movieNowPlaying.map((data) => (
+              <Poster
+                key={data.id}
+                id={data.id}
+                title={data.title}
+                imgUrl={data.poster_path}
+                rating={data.vote_average}
+                year={data.release_date.split("-")[0]}
+                isMovie={true}
+              />
+            ))}
+          />
+        )}
+        {moviePopular && moviePopular.length > 0 && (
+          <Section
+            title="인기 영화"
+            children={moviePopular.map((data) => (
+              <Poster
+                key={data.id}
+                id={data.id}
+                title={data.title}
+                imgUrl={data.poster_path}
+                rating={data.vote_average}
+                year={data.release_date.split("-")[0]}
+                isMovie={true}
+              />
+            ))}
+          />
+        )}
+        {tvNowPlaying && tvNowPlaying.length > 0 && (
+          <Section
+            title="현재 방영중"
+            children={tvNowPlaying.map((data) => (
+              <Poster
+                key={data.id}
+                id={data.id}
+                title={data.name}
+                imgUrl={data.poster_path}
+                rating={data.vote_average}
+                year={data.first_air_date.split("-")[0]}
+                isMovie={false}
+              />
+            ))}
+          />
+        )}
+        {tvPopular && tvPopular.length > 0 && (
+          <Section
+            title="인기 프로그램"
+            children={tvPopular.map((data) => (
+              <Poster
+                key={data.id}
+                id={data.id}
+                title={data.name}
+                imgUrl={data.poster_path}
+                rating={data.vote_average}
+                year={data.first_air_date.split("-")[0]}
+                isMovie={false}
+              />
+            ))}
+          />
+        )}
+      </Container>
+    </>
   );
 
 export default HomePresenter;
