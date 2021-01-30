@@ -13,12 +13,14 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 0px 10px;
-  margin-bottom: 20px;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const List = styled.ul`
   display: flex;
-  position: fixed;
+  padding-left: 100px;
 `;
 
 const Item = styled.li`
@@ -56,8 +58,8 @@ export default withRouter(({ location: { pathname } }) => {
         <Item current={pathname === "/search"}>
           <span onClick={() => history.push("search")}>검색</span>
         </Item>
-        <Item current={pathname === "/detail"}>
-          <span onClick={() => history.push("detail")}>내가 찜한 콘텐츠</span>
+        <Item current={pathname === "/my"}>
+          <span onClick={() => history.push("my")}>내가 찜한 콘텐츠</span>
         </Item>
       </List>
     </Header>

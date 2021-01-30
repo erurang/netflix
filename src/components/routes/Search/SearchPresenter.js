@@ -6,7 +6,8 @@ import Error from "../../Error";
 import Poster from "../../Poster";
 
 const Container = styled.div`
-  padding: 0px 20px;
+  padding: 0px 40px;
+  padding-top: 70px;
 `;
 
 const Form = styled.form`
@@ -46,7 +47,9 @@ const SearchPresenter = ({
                 title={data.title}
                 imgUrl={data.poster_path}
                 rating={data.vote_average}
-                year={data.release_date.split("-")[0]}
+                year={
+                  data.release_date ? data.release_date.split("-")[0] : null
+                }
                 isMovie={true}
               />
             ))}

@@ -6,7 +6,8 @@ import Poster from "../../Poster";
 import Loader from "../../Loader";
 
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 0px 40px;
+  padding-top: 70px;
 `;
 
 const MoviePresenter = ({ nowPlaying, upComing, popular, error, loading }) =>

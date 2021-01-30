@@ -13,11 +13,11 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
     body {
+        height:100%;
         font-family:-apple-system;
         font-size:18px;
         background-color:#151515;
         color:white;
-        padding: 0px 10px
         
     }
 `;

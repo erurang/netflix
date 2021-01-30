@@ -27,6 +27,7 @@ export default class DetailContainer extends React.Component {
     }
 
     this.isMovie = pathname.includes("/movie/");
+
     let result = null;
     try {
       if (this.isMovie) {
@@ -34,7 +35,6 @@ export default class DetailContainer extends React.Component {
       } else {
         ({ data: result } = await tvApi.tvDetail(parsedId));
       }
-      console.log(result);
     } catch {
       this.setState({ error: "검색결과업슴" });
     } finally {
