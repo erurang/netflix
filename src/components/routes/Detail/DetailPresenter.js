@@ -49,7 +49,7 @@ const Data = styled.div`
 `;
 
 const Title = styled.h3`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 32px;
 `;
 
@@ -70,7 +70,31 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, error, loading }) =>
+const Tagline = styled.dd`
+  opacity: 0.7;
+  font-size: 15px;
+`;
+
+const Iframe = styled.iframe`
+  margin-top: 20px;
+`;
+
+const MenuContainer = styled.div``;
+
+const VideoMenu = styled.div`
+  margin-top: 50px;
+  width: 600px;
+  height: 400px;
+  background-color: transperant;
+`;
+
+const Heart = styled.i`
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 20px;
+`;
+
+const DetailPresenter = ({ result, error, loading, heartHandler }) =>
   loading ? (
     <Loader />
   ) : (
@@ -85,11 +109,11 @@ const DetailPresenter = ({ result, error, loading }) =>
         <Data>
           <Title>
             {result.title ? result.title : result.name}
-            <i
-              style={{ cursor: "pointer", marginLeft: "10px" }}
-              className="far fa-heart"
-            ></i>
+            <Heart className="far fa-heart" onClick={heartHandler}></Heart>
           </Title>
+          <Tagline>
+            {result.tagline} {result.vote_average} /10⭐️
+          </Tagline>
           <ItemContainer>
             <Item>
               {result.release_date
@@ -98,7 +122,7 @@ const DetailPresenter = ({ result, error, loading }) =>
             </Item>
             <Divider>/</Divider>
             <Item>
-              {result.runtime ? result.runtime : result.episode_run_time[0]}분
+              {result.runtime ? result.runtime : result.episode_run_time}분
             </Item>
             <Divider>/</Divider>
             <Item>
@@ -111,6 +135,26 @@ const DetailPresenter = ({ result, error, loading }) =>
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          <MenuContainer>
+            <VideoMenu>
+              <Iframe
+                id="ytplayer"
+                title="yotube videoplayer"
+                type="text/html"
+                width="700px"
+                height="400px"
+                src={
+                  result.videos &&
+                  result.videos.results &&
+                  result.videos.results[0]
+                    ? `https://www.youtube.com/embed/${result.videos.results[0].key}`
+                    : null
+                }
+                frameBorder="0"
+                allowFullScreen
+              ></Iframe>
+            </VideoMenu>
+          </MenuContainer>
         </Data>
       </Content>
       {console.log(result)}

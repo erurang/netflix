@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import noThumbnail from "../assets/no.png";
 
 const Container = styled.div`
   font-size: 12px;
@@ -9,8 +10,8 @@ const Container = styled.div`
 const Rating = styled.div`
   position: absolute;
   font-size: 15px;
-  bottom: 30px;
-  right: 0px;
+  bottom: 35px;
+  right: 5px;
   margin-bottom: 5px;
   opacity: 0;
 `;
@@ -26,12 +27,15 @@ const Year = styled.span`
 `;
 
 const Img = styled.div`
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   height: 300px;
   background-size: cover;
   margin-bottom: 10px;
   background-image: url(${(props) =>
-    `https://image.tmdb.org/t/p/w300${props.bgUrl}`});
+    props.bgUrl
+      ? `https://image.tmdb.org/t/p/w300${props.bgUrl}`
+      : `${noThumbnail}`});
   background-position: center center;
   &:hover {
     box-shadow: 0px 0px 16px 5px rgba(255, 255, 255, 1);

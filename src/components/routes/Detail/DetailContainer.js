@@ -11,6 +11,16 @@ export default class DetailContainer extends React.Component {
     loading: true,
   };
 
+  heartHandler = () => {
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
+    const test = JSON.stringify(localStorage.getItem("myList"));
+    localStorage.setItem("myList", JSON.stringify({ ...test, id }));
+  };
+
   async componentDidMount() {
     const {
       match: {
@@ -43,6 +53,13 @@ export default class DetailContainer extends React.Component {
   }
   render() {
     const { result, error, loading } = this.state;
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+    return (
+      <DetailPresenter
+        result={result}
+        error={error}
+        loading={loading}
+        heartHandler={this.heartHandler}
+      />
+    );
   }
 }

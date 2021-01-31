@@ -47,19 +47,19 @@ export default withRouter(({ location: { pathname } }) => {
     <Header>
       <List>
         <Item current={pathname === "/home"}>
-          <span onClick={() => history.push("home")}>홈</span>
+          <span onClick={() => history.replace("/home")}>홈</span>
         </Item>
         <Item current={pathname === "/tv"}>
-          <span onClick={() => history.push("tv")}>TV 프로그램</span>
+          <span onClick={() => history.replace("/tv")}>TV 프로그램</span>
         </Item>
         <Item current={pathname === "/movie"}>
-          <span onClick={() => history.push("movie")}>영화</span>
+          <span onClick={() => history.replace("/movie")}>영화</span>
         </Item>
         <Item current={pathname === "/search"}>
-          <span onClick={() => history.push("search")}>검색</span>
+          <span onClick={() => history.replace("/search")}>검색</span>
         </Item>
         <Item current={pathname === "/my"}>
-          <span onClick={() => history.push("my")}>내가 찜한 콘텐츠</span>
+          <span onClick={() => history.replace("/my")}>내가 찜한 콘텐츠</span>
         </Item>
       </List>
     </Header>
