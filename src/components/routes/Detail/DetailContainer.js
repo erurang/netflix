@@ -11,14 +11,31 @@ export default class DetailContainer extends React.Component {
     loading: true,
   };
 
+  myList = [];
+
   heartHandler = () => {
     const {
       match: {
         params: { id },
       },
     } = this.props;
-    const test = JSON.stringify(localStorage.getItem("myList"));
-    localStorage.setItem("myList", JSON.stringify({ ...test, id }));
+
+    // 일단 불러오고
+    const loadStorage = localStorage.getItem("myList");
+
+    if (loadStorage) {
+      const parseLoadStorage = JSON.parse(loadStorage);
+      console.log(parseLoadStorage);
+      // parseLoadStorage.forEach((list) => this.plusStorage(list.id));
+    } else {
+      this.plusStorage(id);
+    }
+  };
+
+  plusStorage = (id) => {
+    const myListObj = { id };
+    this.myList.push(myListObj);
+    localStorage.setItem("myList", JSON.stringify(this.myList));
   };
 
   async componentDidMount() {

@@ -109,7 +109,7 @@ const DetailPresenter = ({ result, error, loading, heartHandler }) =>
         <Data>
           <Title>
             {result.title ? result.title : result.name}
-            <Heart className="far fa-heart" onClick={heartHandler}></Heart>
+            <Heart className="fas fa-list" onClick={heartHandler}></Heart>
           </Title>
           <Tagline>
             {result.tagline} {result.vote_average} /10⭐️
