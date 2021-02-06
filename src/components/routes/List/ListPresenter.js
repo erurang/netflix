@@ -39,7 +39,7 @@ const ListPresenter = ({ loading, myMovie, myTv }) =>
             <Poster
               key={data.id}
               id={data.id}
-              title={data.title}
+              title={data.name}
               imgUrl={data.poster_path}
               rating={data.vote_average}
               year={data.first_air_date.split("-")[0]}
