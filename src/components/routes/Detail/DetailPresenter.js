@@ -94,7 +94,7 @@ const Heart = styled.i`
   font-size: 20px;
 `;
 
-const DetailPresenter = ({ result, error, loading, heartHandler }) =>
+const DetailPresenter = ({ result, error, loading, heartHandler, favor }) =>
   loading ? (
     <Loader />
   ) : (
@@ -109,7 +109,20 @@ const DetailPresenter = ({ result, error, loading, heartHandler }) =>
         <Data>
           <Title>
             {result.title ? result.title : result.name}
-            <Heart className="fas fa-list" onClick={heartHandler}></Heart>
+            <Heart
+              className={
+                favor.length > 0
+                  ? favor.map((n) => {
+                      if (parseInt(n.id) === result.id) {
+                        return "fas fa-bookmark";
+                      } else {
+                        return "far fa-bookmark";
+                      }
+                    })
+                  : "far fa-bookmark"
+              }
+              onClick={heartHandler}
+            ></Heart>
           </Title>
           <Tagline>
             {result.tagline} {result.vote_average} /10⭐️

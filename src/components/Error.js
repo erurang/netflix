@@ -11,10 +11,19 @@ const Text = styled.span`
   font-weight: 600;
 `;
 
-const Error = ({ text }) => (
-  <Container>
-    <Text>{text}</Text>
-  </Container>
-);
+const Error = ({ text }) => {
+  console.log(text);
+  return (
+    <Container>
+      <Text>{text}</Text>
+    </Container>
+  );
+};
+
+// const Error = ({ text }) => (
+//   <Container>
+//     <Text>{text}</Text>
+//   </Container>
+// );
 
 export default Error;

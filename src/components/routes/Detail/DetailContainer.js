@@ -9,6 +9,8 @@ export default class DetailContainer extends React.Component {
     result: null,
     error: null,
     loading: true,
+    // 상태변화 페이크로 눈앞에서 누르면 바뀌게끔 처리함
+    icon: false,
   };
 
   heartHandler = () => {
@@ -40,9 +42,19 @@ export default class DetailContainer extends React.Component {
       } else {
         if (test.length === 0) {
           localStorage.setItem("myMovie", JSON.stringify([{ id }]));
+          const test = JSON.parse(localStorage.getItem("favor"));
+          test
+            ? localStorage.setItem("favor", JSON.stringify([...test, { id }]))
+            : localStorage.setItem("favor", JSON.stringify([{ id }]));
+          this.setState({ icon: true });
+          // localStorage.setItem("favor", JSON.stringify([...test, { id }]));
         } else {
           const test = JSON.parse(localStorage.getItem("myMovie"));
           localStorage.setItem("myMovie", JSON.stringify([...test, { id }]));
+
+          const test2 = JSON.parse(localStorage.getItem("favor"));
+          localStorage.setItem("favor", JSON.stringify([...test2, { id }]));
+          this.setState({ icon: true });
         }
       }
     } else {
@@ -58,9 +70,20 @@ export default class DetailContainer extends React.Component {
       } else {
         if (test.length === 0) {
           localStorage.setItem("myTv", JSON.stringify([{ id }]));
+
+          const test = JSON.parse(localStorage.getItem("favor"));
+          test
+            ? localStorage.setItem("favor", JSON.stringify([...test, { id }]))
+            : localStorage.setItem("favor", JSON.stringify([{ id }]));
+          this.setState({ icon: true });
+          // localStorage.setItem("favor", JSON.stringify([...test, { id }]));
         } else {
           const test = JSON.parse(localStorage.getItem("myTv"));
           localStorage.setItem("myTv", JSON.stringify([...test, { id }]));
+
+          const test2 = JSON.parse(localStorage.getItem("favor"));
+          localStorage.setItem("favor", JSON.stringify([...test2, { id }]));
+          this.setState({ icon: true });
         }
       }
     }
@@ -69,16 +92,23 @@ export default class DetailContainer extends React.Component {
   removeStorage = (id, kinds) => {
     if (kinds === "movie") {
       const remain = JSON.parse(localStorage.getItem("myMovie"));
-
       const newMyList = remain.filter((n) => n.id !== id);
-
       localStorage.setItem("myMovie", JSON.stringify(newMyList));
+
+      const remain2 = JSON.parse(localStorage.getItem("favor"));
+      const newMyList2 = remain2.filter((n) => n.id !== id);
+      localStorage.setItem("favor", JSON.stringify(newMyList2));
+
+      this.setState({ icon: false });
     } else {
       const remain = JSON.parse(localStorage.getItem("myTv"));
-
       const newMyList = remain.filter((n) => n.id !== id);
-
       localStorage.setItem("myTv", JSON.stringify(newMyList));
+
+      const remain2 = JSON.parse(localStorage.getItem("favor"));
+      const newMyList2 = remain2.filter((n) => n.id !== id);
+      localStorage.setItem("favor", JSON.stringify(newMyList2));
+      this.setState({ icon: false });
     }
   };
 
@@ -113,13 +143,15 @@ export default class DetailContainer extends React.Component {
     }
   }
   render() {
-    const { result, error, loading } = this.state;
+    const { result, error, loading, icon } = this.state;
+    const favor = JSON.parse(localStorage.getItem("favor"));
     return (
       <DetailPresenter
         result={result}
         error={error}
         loading={loading}
         heartHandler={this.heartHandler}
+        favor={favor}
       />
     );
   }
