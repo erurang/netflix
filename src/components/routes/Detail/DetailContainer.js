@@ -11,8 +11,6 @@ export default class DetailContainer extends React.Component {
     loading: true,
   };
 
-  myList = [];
-
   heartHandler = () => {
     const {
       match: {
@@ -20,22 +18,35 @@ export default class DetailContainer extends React.Component {
       },
     } = this.props;
 
-    // 일단 불러오고
-    const loadStorage = localStorage.getItem("myList");
-
-    if (loadStorage) {
-      const parseLoadStorage = JSON.parse(loadStorage);
-      console.log(parseLoadStorage);
-      // parseLoadStorage.forEach((list) => this.plusStorage(list.id));
-    } else {
-      this.plusStorage(id);
-    }
+    this.plusStorage(id);
   };
 
   plusStorage = (id) => {
-    const myListObj = { id };
-    this.myList.push(myListObj);
-    localStorage.setItem("myList", JSON.stringify(this.myList));
+    // 가져와서
+    const test = JSON.parse(localStorage.getItem("myList")) || [];
+
+    let res = test.some((n) => {
+      return n.id == id;
+    });
+
+    if (res == true) {
+      this.removeStorage(id);
+    } else {
+      if (test.length == 0) {
+        localStorage.setItem("myList", JSON.stringify([{ id }]));
+      } else {
+        const test = JSON.parse(localStorage.getItem("myList"));
+        localStorage.setItem("myList", JSON.stringify([...test, { id }]));
+      }
+    }
+  };
+
+  removeStorage = (id) => {
+    const remain = JSON.parse(localStorage.getItem("myList"));
+
+    const newMyList = remain.filter((n) => n.id !== id);
+
+    localStorage.setItem("myList", JSON.stringify(newMyList));
   };
 
   async componentDidMount() {

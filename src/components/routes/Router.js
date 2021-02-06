@@ -6,6 +6,7 @@ import Search from "./Search/SearchContainer";
 import TV from "./TV/TvContainer";
 import Movie from "./Movie/MovieContainer";
 import Header from "../header/Header";
+import ListContainer from "./List/ListContainer";
 
 function Router() {
   return (
@@ -36,6 +37,9 @@ function Router() {
         ></Route>
         <Route path={"/search"}>
           <Search />
+        </Route>
+        <Route path={"/my"}>
+          <ListContainer />
         </Route>
       </Switch>
     </BrowserRouter>
