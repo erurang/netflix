@@ -35,7 +35,6 @@ export default class MovieContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const { nowPlaying, upComing, popular, error, loading } = this.state;
     return (
       <MoviePresenter

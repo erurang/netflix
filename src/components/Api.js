@@ -49,3 +49,27 @@ export const trailerApi = {
   movieTrailer: (id) => api.get(`movie/${id}/videos`),
   tvTrailer: (id) => api.get(`tv/${id}/videos`),
 };
+
+const myMovieApi = axios.create({
+  baseURL: `https://api.themoviedb.org/3/movie/`,
+  params: {
+    api_key: "4eb43610d8241bb64cd3edeb5b18fbd3",
+    language: "ko",
+  },
+});
+
+export const myMovie = {
+  Detail: (id) => myMovieApi.get(`${id}`),
+};
+
+const myTvApi = axios.create({
+  baseURL: `https://api.themoviedb.org/3/tv/`,
+  params: {
+    api_key: "4eb43610d8241bb64cd3edeb5b18fbd3",
+    language: "ko",
+  },
+});
+
+export const myTv = {
+  Detail: (id) => myTvApi.get(`${id}`),
+};

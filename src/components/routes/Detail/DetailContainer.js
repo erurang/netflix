@@ -22,31 +22,64 @@ export default class DetailContainer extends React.Component {
   };
 
   plusStorage = (id) => {
-    // 가져와서
-    const test = JSON.parse(localStorage.getItem("myList")) || [];
+    const {
+      match: { url },
+    } = this.props;
+    const check = url.split("/");
 
-    let res = test.some((n) => {
-      return n.id == id;
-    });
+    // 만약에 영화라면
+    if (check[1] === "movie") {
+      const test = JSON.parse(localStorage.getItem("myMovie")) || [];
 
-    if (res == true) {
-      this.removeStorage(id);
-    } else {
-      if (test.length == 0) {
-        localStorage.setItem("myList", JSON.stringify([{ id }]));
+      let res = test.some((n) => {
+        return n.id === id;
+      });
+
+      if (res === true) {
+        this.removeStorage(id, "movie");
       } else {
-        const test = JSON.parse(localStorage.getItem("myList"));
-        localStorage.setItem("myList", JSON.stringify([...test, { id }]));
+        if (test.length === 0) {
+          localStorage.setItem("myMovie", JSON.stringify([{ id }]));
+        } else {
+          const test = JSON.parse(localStorage.getItem("myMovie"));
+          localStorage.setItem("myMovie", JSON.stringify([...test, { id }]));
+        }
+      }
+    } else {
+      // 티비라면
+      const test = JSON.parse(localStorage.getItem("myTv")) || [];
+
+      let res = test.some((n) => {
+        return n.id === id;
+      });
+
+      if (res === true) {
+        this.removeStorage(id, "tv");
+      } else {
+        if (test.length === 0) {
+          localStorage.setItem("myTv", JSON.stringify([{ id }]));
+        } else {
+          const test = JSON.parse(localStorage.getItem("myTv"));
+          localStorage.setItem("myTv", JSON.stringify([...test, { id }]));
+        }
       }
     }
   };
 
-  removeStorage = (id) => {
-    const remain = JSON.parse(localStorage.getItem("myList"));
+  removeStorage = (id, kinds) => {
+    if (kinds === "movie") {
+      const remain = JSON.parse(localStorage.getItem("myMovie"));
 
-    const newMyList = remain.filter((n) => n.id !== id);
+      const newMyList = remain.filter((n) => n.id !== id);
 
-    localStorage.setItem("myList", JSON.stringify(newMyList));
+      localStorage.setItem("myMovie", JSON.stringify(newMyList));
+    } else {
+      const remain = JSON.parse(localStorage.getItem("myTv"));
+
+      const newMyList = remain.filter((n) => n.id !== id);
+
+      localStorage.setItem("myTv", JSON.stringify(newMyList));
+    }
   };
 
   async componentDidMount() {

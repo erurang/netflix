@@ -2,7 +2,7 @@ import React from "react";
 import { moviesApi, tvApi } from "../../Api";
 import HomePresenter from "./HomePresenter";
 
-export default class extends React.Component {
+export default class HomeContainer extends React.Component {
   state = {
     movieNowPlaying: null,
     moviePopular: null,
@@ -21,7 +21,6 @@ export default class extends React.Component {
       const {
         data: { results: moviePopular },
       } = await moviesApi.popular();
-      // this.setState({ popular });
 
       const {
         data: { results: tvNowPlaying },
