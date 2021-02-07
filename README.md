@@ -29,3 +29,11 @@ favor에는 내가 즐겨찾기한 영화/프로그램 관계없이 id를 저장
 <img width="758" alt="스크린샷 2021-02-07 오전 2 06 06" src="https://user-images.githubusercontent.com/56789064/107124751-0c6beb80-68e9-11eb-9915-d461fd5a4f06.png">
 
 위 사진은 localStorage의 myMovie myTv의 id들을 각각 표현한 결과입니다.
+
+<img width="996" alt="스크린샷 2021-02-07 오후 8 13 44" src="https://user-images.githubusercontent.com/56789064/107144814-fd387c80-6980-11eb-9981-4778ef1b03d4.png">
+
+검색결과가 없을시에 에러메세지가 뜨도록 추가하였습니다.
+
+<img width="1018" alt="스크린샷 2021-02-07 오후 8 14 37" src="https://user-images.githubusercontent.com/56789064/107144830-1c370e80-6981-11eb-9581-7f63d715b35f.png">
+
+즐겨찾기한 영상이 없을때 에러메세지가 뜨도록 추가하였습니다.
