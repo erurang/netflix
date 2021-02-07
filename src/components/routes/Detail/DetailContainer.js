@@ -33,6 +33,11 @@ export default class DetailContainer extends React.Component {
     if (check[1] === "movie") {
       const test = JSON.parse(localStorage.getItem("myMovie")) || [];
 
+      const zz = JSON.parse(localStorage.getItem("myTv"));
+      if (zz === null) {
+        localStorage.setItem("myTv", JSON.stringify([]));
+      }
+
       let res = test.some((n) => {
         return n.id === id;
       });
@@ -47,6 +52,7 @@ export default class DetailContainer extends React.Component {
             ? localStorage.setItem("favor", JSON.stringify([...test, { id }]))
             : localStorage.setItem("favor", JSON.stringify([{ id }]));
           this.setState({ icon: true });
+
           // localStorage.setItem("favor", JSON.stringify([...test, { id }]));
         } else {
           const test = JSON.parse(localStorage.getItem("myMovie"));
@@ -60,6 +66,11 @@ export default class DetailContainer extends React.Component {
     } else {
       // 티비라면
       const test = JSON.parse(localStorage.getItem("myTv")) || [];
+
+      const zz = JSON.parse(localStorage.getItem("myMovie"));
+      if (zz === null) {
+        localStorage.setItem("myMovie", JSON.stringify([]));
+      }
 
       let res = test.some((n) => {
         return n.id === id;

@@ -17,6 +17,7 @@ export default class ListContainer extends Component {
 
     const movieList = [];
     const tvList = [];
+
     try {
       for (const item of myLocalMovie) {
         const test = await myMovie.Detail(item.id);
