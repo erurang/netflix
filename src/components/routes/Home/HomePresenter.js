@@ -6,6 +6,8 @@ import Section from "../../Section";
 import Loader from "../../Loader";
 import Poster from "../../Poster";
 
+import Helmet from "react-helmet";
+
 const Container = styled.div`
   padding: 0px 40px;
   padding-top: 70px;
@@ -24,6 +26,10 @@ const HomePresenter = ({
   ) : (
     <>
       <Container>
+        {/* head를 수정하기 쉽게해주는 react-helmet */}
+        <Helmet>
+          <title>홈 | Netflix</title>
+        </Helmet>
         {movieNowPlaying && movieNowPlaying.length > 0 && (
           <Section
             title="현재 상영중"

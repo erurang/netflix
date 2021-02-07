@@ -46,8 +46,8 @@ export default withRouter(({ location: { pathname } }) => {
   return (
     <Header>
       <List>
-        <Item current={pathname === "/home"}>
-          <span onClick={() => history.replace("/home")}>홈</span>
+        <Item current={pathname === "/"}>
+          <span onClick={() => history.replace("/")}>홈</span>
         </Item>
         <Item current={pathname === "/tv"}>
           <span onClick={() => history.replace("/tv")}>TV 프로그램</span>

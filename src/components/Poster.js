@@ -50,7 +50,7 @@ const ImgContainer = styled.div`
   margin-right: 30px;
   transition: transform 300ms;
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.125);
     z-index: 1;
     ${Img} {
       opacity: 0.4;
