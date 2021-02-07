@@ -1,6 +1,6 @@
 # Netflix clone
 
-localStorage를 이용해서 내가 리스트에 추가한 영화/프로그램을 볼수있게 구현하였습니다.
+현재 [깃허브페이지](https://erurang.github.io/netflix)에 배포되어 있습니다.
 
 영화나 TV 프로그램의 포스터를 클릭시에 디테일화면으로 넘어갑니다.
 
@@ -37,3 +37,4 @@ favor에는 내가 즐겨찾기한 영화/프로그램 관계없이 id를 저장
 <img width="1018" alt="스크린샷 2021-02-07 오후 8 14 37" src="https://user-images.githubusercontent.com/56789064/107144830-1c370e80-6981-11eb-9581-7f63d715b35f.png">
 
 즐겨찾기한 영상이 없을때 에러메세지가 뜨도록 추가하였습니다.
+
