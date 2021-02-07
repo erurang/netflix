@@ -111,7 +111,7 @@ const DetailPresenter = ({ result, error, loading, heartHandler, favor }) =>
             {result.title ? result.title : result.name}
             <Heart
               className={
-                favor.length > 0
+                favor !== null && favor.length > 0
                   ? favor.map((n) => {
                       if (parseInt(n.id) === result.id) {
                         return "fas fa-bookmark";

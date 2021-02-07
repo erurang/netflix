@@ -30,7 +30,7 @@ export default class ListContainer extends Component {
         // console.log(tvList);
       }
     } catch {
-      this.setState({ error: "찜목록에러" });
+      this.setState({ error: "즐겨찾기한 영상이 없어요! 🙄" });
     } finally {
       this.setState({ loading: false, myMovie: movieList, myTv: tvList });
     }
@@ -57,8 +57,15 @@ export default class ListContainer extends Component {
   }
 
   render() {
-    const { loading, myMovie, myTv } = this.state;
+    const { loading, myMovie, myTv, error } = this.state;
 
-    return <ListPresenter laoding={loading} myMovie={myMovie} myTv={myTv} />;
+    return (
+      <ListPresenter
+        laoding={loading}
+        myMovie={myMovie}
+        myTv={myTv}
+        error={error}
+      />
+    );
   }
 }

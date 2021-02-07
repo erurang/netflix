@@ -8,6 +8,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.span`
+  color: white;
   font-weight: 600;
 `;
 

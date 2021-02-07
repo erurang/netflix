@@ -15,11 +15,11 @@ export default class SearchContainer extends React.Component {
     e.preventDefault();
     const { searchTerm } = this.state;
 
-    console.log(searchTerm);
+    // console.log(searchTerm);
     if (searchTerm !== "") {
       this.saerchByTerm(searchTerm);
     }
-    console.log(encodeURIComponent(searchTerm));
+    // console.log(encodeURIComponent(searchTerm));
   };
 
   updateTerm = (e) => {
@@ -44,8 +44,13 @@ export default class SearchContainer extends React.Component {
       } = await tvApi.search(searchTerm);
 
       this.setState({ movieResults, tvResults });
+
+      if (movieResults.length === 0 && tvResults.length === 0) {
+        this.setState({ error: "에 대한 검색결과가 없습니다." });
+      }
     } catch {
-      this.setState({ error: "결과없음" });
+      this.setState({ error: "에 대한 검색결과가 없습니다." });
+      throw Error();
     } finally {
       this.setState({ loading: false });
     }
