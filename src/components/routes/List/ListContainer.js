@@ -30,6 +30,10 @@ export default class ListContainer extends Component {
         tvList.push(test.data);
         // console.log(tvList);
       }
+
+      if (myLocalTv.length === 0 && myLocalMovie.length === 0) {
+        this.setState({ error: "즐겨찾기한 영상이 없어요! 🙄" });
+      }
     } catch {
       this.setState({ error: "즐겨찾기한 영상이 없어요! 🙄" });
     } finally {
